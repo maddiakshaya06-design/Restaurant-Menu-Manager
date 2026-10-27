@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f7f9">
+  <title>Restaurant Menu Manager</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-icon">R</span><span>Menu<span class="brand-light">Manager</span></span></a>
+    <p class="nav-heading">WORKSPACE</p>
+    <a class="nav-link active" href="#dashboard">▦ <span>Dashboard</span></a>
+    <a class="nav-link" href="#menu-section">☷ <span>Menu items</span></a>
+    <div class="sidebar-bottom"><div class="profile-avatar">RM</div><div><strong>Restaurant Admin</strong><small>Local demo workspace</small></div></div>
+  </aside>
+  <main class="main-content" id="dashboard">
+    <header class="topbar">
+      <div><p class="eyebrow">RESTAURANT WORKSPACE</p><h1>Menu dashboard</h1><p class="muted">Manage your dishes, prices and availability.</p></div>
+      <button class="button button-primary" id="add-button">+ Add menu item</button>
+    </header>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section class="stats-grid" aria-label="Menu statistics">
+      <article class="stat-card"><span class="stat-label">Total menu items</span><strong id="total-count">—</strong><span class="stat-note">Across all categories</span></article>
+      <article class="stat-card"><span class="stat-label">Available items</span><strong id="available-count">—</strong><span class="stat-note">Ready to serve</span></article>
+      <article class="stat-card"><span class="stat-label">Unavailable items</span><strong id="unavailable-count">—</strong><span class="stat-note">Currently not served</span></article>
+      <article class="stat-card"><span class="stat-label">Categories used</span><strong id="category-count">—</strong><span class="stat-note">Menu organization</span></article>
+    </section>
+    <section class="panel" id="menu-section">
+      <div class="panel-heading"><div><h2>Your menu items</h2><p class="muted">Search, update and organize your restaurant menu.</p></div><button class="button button-outline" id="refresh-button">↻ Refresh</button></div>
+      <div class="filters">
+        <label class="search-box"><span>⌕</span><input type="search" id="search-input" placeholder="Search dishes..." aria-label="Search dishes"></label>
+        <label class="filter-label">Category<select id="category-filter"><option value="">All categories</option><option>Starters</option><option>Main Course</option><option>Desserts</option><option>Beverages</option><option>Snacks</option><option>Other</option></select></label>
+        <label class="filter-label">Availability<select id="availability-filter"><option value="">All items</option><option value="available">Available</option><option value="unavailable">Unavailable</option></select></label>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>ITEM</th><th>CATEGORY</th><th>PRICE</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="menu-table-body"><tr><td colspan="5" class="empty-state">Loading menu...</td></tr></tbody></table></div>
+      <p class="table-footer" id="result-count">Loading menu data...</p>
+    </section>
+    <footer>Restaurant Menu Manager <span>·</span> Student project</footer>
+  </main>
+  <dialog id="item-dialog">
+    <form id="item-form">
+      <div class="dialog-heading"><div><p class="eyebrow">MENU MANAGEMENT</p><h2 id="dialog-title">Add menu item</h2></div><button type="button" class="close-button" id="close-dialog" aria-label="Close dialog">×</button></div>
+      <input type="hidden" id="item-id">
+      <label class="field">Dish name<input id="item-name" name="name" maxlength="100" required placeholder="e.g. Paneer Tikka"></label>
+      <label class="field">Description<textarea id="item-description" name="description" maxlength="500" rows="3" placeholder="Describe the dish"></textarea></label>
+      <div class="form-row">
+        <label class="field">Category<select id="item-category" name="category" required><option value="">Select category</option><option>Starters</option><option>Main Course</option><option>Desserts</option><option>Beverages</option><option>Snacks</option><option>Other</option></select></label>
+        <label class="field">Price (₹)<input id="item-price" name="price" type="number" min="0" max="1000000" step="0.01" required placeholder="199"></label>
+      </div>
+      <label class="availability-control"><input id="item-available" type="checkbox" checked><span>Available for customers</span></label>
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button type="button" class="button button-outline" id="cancel-button">Cancel</button><button type="submit" class="button button-primary" id="save-button">Save item</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
