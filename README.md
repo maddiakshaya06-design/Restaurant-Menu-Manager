@@ -105,3 +105,29 @@ git remote add origin YOUR_GITHUB_REPOSITORY_URL
 git push -u origin main
 ```
 Replace the URL with your repository URL. Check `git status` before committing; `.env`, `node_modules/`, and private data must not be uploaded. `.gitignore` does not remove secrets already committed.
+# Restaurant Menu Manager
+
+A full-stack web application for managing restaurant menu items.
+
+## Live Demo
+🌐 **Try the website:** https://restaurant-menu-manager-fft6.onrender.com
+
+## Technologies Used
+- HTML5
+- CSS3
+- JavaScript
+- Node.js
+- Express.js
+- Supabase PostgreSQL
+
+## Features
+- View restaurant menu items
+- Add menu items
+- Organize items by category
+- Store menu data in a database
+
+## Project Repository
+Explore the source code here: https://github.com/maddiakshaya06-design/Restaurant-Menu-Manager
+
+## Developer
+Akshaya — First-year CSE (AI & ML) student
